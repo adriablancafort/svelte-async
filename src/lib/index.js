@@ -1,5 +1,7 @@
-export function delayed(value, ms = 500) {
-	return new Promise((f) => {
-		setTimeout(() => f(value), ms);
-	});
+export async function fetchProducts() {
+    const res = await fetch('https://dummyjson.com/products');
+    if (!res.ok) {
+        throw new Error('Failed to fetch products');
+    }
+    return await res.json();
 }
